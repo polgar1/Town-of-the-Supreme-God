@@ -28,6 +28,6 @@ func handleAnim():
 		anim.play("walkVert")
 	elif Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
 		anim.play("walkHor")
-
+		
 	else:
 		anim.play("idle")

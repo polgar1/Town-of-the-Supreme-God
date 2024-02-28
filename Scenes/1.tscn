@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dei0y5li26qs8"]
+[gd_scene load_steps=6 format=3 uid="uid://dei0y5li26qs8"]
 
 [ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="2_4f23s"]
 [ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="2_7fj11"]
+[ext_resource type="PackedScene" uid="uid://b8gs7c68r4b83" path="res://Prefabs/crt.tscn" id="4_1jwon"]
 [ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="4_mwlwh"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="5_rf6g2"]
 
 [node name="1" type="Node2D"]
 
@@ -14,3 +16,13 @@ voiceLines = [null, null]
 [node name="CanvasLayer" parent="." instance=ExtResource("2_4f23s")]
 
 [node name="Beep" parent="." instance=ExtResource("4_mwlwh")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 160.0
+offset_bottom = 90.0
+color = Color(0.101961, 0.0980392, 0.0784314, 1)
+
+[node name="Player" parent="." instance=ExtResource("5_rf6g2")]
+position = Vector2(42, 20)
+
+[node name="CRT" parent="." instance=ExtResource("4_1jwon")]

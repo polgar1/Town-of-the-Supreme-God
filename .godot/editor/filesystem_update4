@@ -7,3 +7,8 @@ res://Prefabs/dialog_manager.tscn
 res://Prefabs/canvas_layer.tscn
 res://Player.gd
 res://Prefabs/player.tscn
+res://crt.gdshader
+res://Prefabs/crt.tscn
+res://Global.gd
+res://Prefabs/crt.gd
+res://MainMenu/crtBox.gd

@@ -1,9 +1,10 @@
-AnimationPlayer
+Label
+CheckBox
 Sprite2D
+ColorRect
+AnimationPlayer
 CharacterBody2D
 Node2D
 AudioStreamPlayer
-ColorRect
-Label
 CanvasLayer
 Button

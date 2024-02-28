@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bftdr84mou7fk"]
+
+[ext_resource type="AudioStream" uid="uid://hyugjpdqosjp" path="res://beep.wav" id="1_xuoji"]
+
+[node name="Beep" type="AudioStreamPlayer" groups=["beep"]]
+stream = ExtResource("1_xuoji")
+volume_db = -5.21
+pitch_scale = 0.51

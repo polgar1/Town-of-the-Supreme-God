@@ -1,0 +1,9 @@
+AnimationPlayer
+Sprite2D
+CharacterBody2D
+Node2D
+AudioStreamPlayer
+ColorRect
+Label
+CanvasLayer
+Button

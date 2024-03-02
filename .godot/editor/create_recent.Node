@@ -1,10 +1,13 @@
+Node2D
+AudioStreamPlayer
+CollisionShape2D
+Area2D
+CharacterBody2D
+ColorRect
+StaticBody2D
 Label
 CheckBox
 Sprite2D
-ColorRect
 AnimationPlayer
-CharacterBody2D
-Node2D
-AudioStreamPlayer
 CanvasLayer
 Button

@@ -1,17 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dei0y5li26qs8"]
+[gd_scene load_steps=15 format=3 uid="uid://dei0y5li26qs8"]
 
 [ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="2_4f23s"]
 [ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="2_7fj11"]
-[ext_resource type="PackedScene" uid="uid://b8gs7c68r4b83" path="res://Prefabs/crt.tscn" id="4_1jwon"]
 [ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="4_mwlwh"]
 [ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="5_rf6g2"]
+[ext_resource type="Texture2D" uid="uid://cxtweqhs0qbbc" path="res://1/1.png" id="6_2gfto"]
+[ext_resource type="PackedScene" uid="uid://c10upqfkmiwpg" path="res://Prefabs/interact_area.tscn" id="7_mlv17"]
+[ext_resource type="AudioStream" uid="uid://71qnh8cps2b4" path="res://1/doll1.wav" id="8_ctnrr"]
+[ext_resource type="AudioStream" uid="uid://cpvomalloaf5r" path="res://1/doll2.wav" id="9_2gsb1"]
+[ext_resource type="AudioStream" uid="uid://djmtnirqmg8it" path="res://1/doll3.wav" id="10_e4she"]
+[ext_resource type="AudioStream" uid="uid://bmj4qcir7wvmb" path="res://1/sam(5).wav" id="10_evbi1"]
+[ext_resource type="AudioStream" uid="uid://c1fd44mffu8if" path="res://1/sam(6).wav" id="11_6vmd7"]
+[ext_resource type="AudioStream" uid="uid://bdyodsojak71x" path="res://1/sam(7).wav" id="12_1mui7"]
+[ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="13_sgtng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ehvx"]
+size = Vector2(187, 59)
 
 [node name="1" type="Node2D"]
 
 [node name="DialogManager" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("2_7fj11")]
 position = Vector2(42, 44)
-dialogLines = Array[String](["Abcdefghijklmniopqrsatuvar", "Lolz"])
-voiceLines = [null, null]
+dialogLines = Array[String](["YOU: A baby doll", "I think I received it as a gift for a birthday", "Strange, I don't remember who gave it to me."])
+voiceLines = [NodePath("../VoiceLines/1"), NodePath("../VoiceLines/2"), NodePath("../VoiceLines/3")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_4f23s")]
 
@@ -23,6 +34,74 @@ offset_bottom = 90.0
 color = Color(0.101961, 0.0980392, 0.0784314, 1)
 
 [node name="Player" parent="." instance=ExtResource("5_rf6g2")]
-position = Vector2(42, 20)
+z_index = 1
+position = Vector2(88, 65)
 
-[node name="CRT" parent="." instance=ExtResource("4_1jwon")]
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("6_2gfto")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(79, -4)
+shape = SubResource("RectangleShape2D_6ehvx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-19, 115)
+shape = SubResource("RectangleShape2D_6ehvx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(197, 115)
+shape = SubResource("RectangleShape2D_6ehvx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(204, 57)
+shape = SubResource("RectangleShape2D_6ehvx")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-90, 54)
+shape = SubResource("RectangleShape2D_6ehvx")
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("7_mlv17")]
+position = Vector2(19, 50)
+dialogManager = NodePath("../DialogManager")
+
+[node name="VoiceLines" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("8_ctnrr")
+volume_db = -7.875
+
+[node name="2" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("9_2gsb1")
+volume_db = -7.875
+
+[node name="3" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("10_e4she")
+volume_db = -7.875
+
+[node name="4" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("10_evbi1")
+volume_db = -7.875
+
+[node name="5" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("11_6vmd7")
+volume_db = -7.875
+
+[node name="6" type="AudioStreamPlayer" parent="VoiceLines"]
+stream = ExtResource("12_1mui7")
+volume_db = -7.875
+
+[node name="DialogManager2" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("2_7fj11")]
+position = Vector2(83, 25)
+dialogLines = Array[String](["YOU: A TV. What a strange invention.", "Technology advances so fast.", "Probably we'll fit these in our pockets in a few years."])
+voiceLines = [NodePath("../VoiceLines/4"), NodePath("../VoiceLines/5"), NodePath("../VoiceLines/6")]
+
+[node name="InteractArea2" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("7_mlv17")]
+position = Vector2(87, 20)
+dialogManager = NodePath("../DialogManager2")
+
+[node name="SceneChangerArea" parent="." instance=ExtResource("13_sgtng")]
+position = Vector2(89, 99)
+nextScene = "res://Scenes/2.tscn"

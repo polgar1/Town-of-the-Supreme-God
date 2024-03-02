@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfmvto4bk1iu7"]
+
+[ext_resource type="Script" path="res://Prefabs/scene_changer_area.gd" id="1_38fl8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3alrs"]
+
+[node name="SceneChangerArea" type="Area2D"]
+script = ExtResource("1_38fl8")
+x = 1.0
+y = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3alrs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

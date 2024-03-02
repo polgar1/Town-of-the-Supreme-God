@@ -1,0 +1,9 @@
+Main character tts settings:
+	118
+	69
+	126
+	126
+
+
+Credits:
+	Music: Sad Satan by z3r0

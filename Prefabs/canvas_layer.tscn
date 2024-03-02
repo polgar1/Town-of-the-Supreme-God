@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bevi32b7fuser"]
+[gd_scene load_steps=3 format=3 uid="uid://bevi32b7fuser"]
 
 [ext_resource type="FontFile" uid="uid://rlwi55rx7rlt" path="res://prstart.ttf" id="1_m1ld5"]
+[ext_resource type="PackedScene" uid="uid://b8gs7c68r4b83" path="res://Prefabs/crt.tscn" id="2_udpab"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -35,3 +36,5 @@ offset_top = -1.0
 offset_right = 153.0
 offset_bottom = 54.0
 color = Color(0.101961, 0.0980392, 0.0784314, 1)
+
+[node name="CRT" parent="." instance=ExtResource("2_udpab")]

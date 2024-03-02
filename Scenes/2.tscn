@@ -1,0 +1,161 @@
+[gd_scene load_steps=27 format=3 uid="uid://ct1mnotnne7fw"]
+
+[ext_resource type="Texture2D" uid="uid://c0dbvsxdgra82" path="res://1/2.png" id="1_yjfwi"]
+[ext_resource type="Texture2D" uid="uid://bkexfcahcllad" path="res://1/mail.png" id="2_cxn7g"]
+[ext_resource type="Texture2D" uid="uid://clhe4dkinjnnl" path="res://Sprites/car.png" id="3_d3eoq"]
+[ext_resource type="AudioStream" uid="uid://csw0jfvb4ge87" path="res://1/sam(8).wav" id="4_3da6a"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="4_srfcg"]
+[ext_resource type="AudioStream" uid="uid://dal0qwiwwb1bv" path="res://1/sam(9).wav" id="5_5t3mw"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="5_lppmy"]
+[ext_resource type="AudioStream" uid="uid://boxoaj2cfw3yd" path="res://1/sam(10).wav" id="6_e5hcp"]
+[ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="6_upg2w"]
+[ext_resource type="AudioStream" uid="uid://m6fv5jxrek43" path="res://1/sam(11).wav" id="7_unh3q"]
+[ext_resource type="AudioStream" uid="uid://33grx866qd2b" path="res://1/sam(12).wav" id="8_hjuxf"]
+[ext_resource type="AudioStream" uid="uid://p1tvr2dqdmkw" path="res://1/sam(13).wav" id="9_uiyuc"]
+[ext_resource type="PackedScene" uid="uid://c10upqfkmiwpg" path="res://Prefabs/interact_area.tscn" id="10_ikhsv"]
+[ext_resource type="AudioStream" uid="uid://4w8mwaah6lpv" path="res://1/sam(14).wav" id="10_rbmab"]
+[ext_resource type="AudioStream" uid="uid://sor33qvqevmy" path="res://1/sam(15).wav" id="11_c66fk"]
+[ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="11_jj40s"]
+[ext_resource type="AudioStream" uid="uid://6kudm4p3f1qj" path="res://1/sam(16).wav" id="12_n8bkb"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="12_v4qwr"]
+[ext_resource type="AudioStream" uid="uid://ba2wsnx8fhvnf" path="res://1/sam(17).wav" id="13_8erv2"]
+[ext_resource type="AudioStream" uid="uid://bvs5itk2f0g8j" path="res://1/sam.wav" id="14_dlq04"]
+[ext_resource type="AudioStream" uid="uid://bnlwuiyfns3y2" path="res://1/sam(1).wav" id="15_st3lv"]
+[ext_resource type="AudioStream" uid="uid://bl7r8hweur1ph" path="res://1/sam(2).wav" id="16_phx23"]
+[ext_resource type="Script" path="res://Scenes/Executor1.gd" id="20_q2r54"]
+[ext_resource type="Script" path="res://Scenes/ex2.gd" id="24_2708k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q6er"]
+size = Vector2(187, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnyu3"]
+size = Vector2(61.5, 13.5)
+
+[node name="2" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-1, 1)
+
+[node name="2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(81, 44)
+texture = ExtResource("1_yjfwi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="2"]
+position = Vector2(-70, -61)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/StaticBody2D"]
+position = Vector2(68, 7)
+shape = SubResource("RectangleShape2D_4q6er")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="2/StaticBody2D"]
+position = Vector2(68, 131)
+shape = SubResource("RectangleShape2D_4q6er")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="2/StaticBody2D"]
+position = Vector2(35, 91)
+shape = SubResource("RectangleShape2D_wnyu3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="2/StaticBody2D"]
+position = Vector2(243, 71)
+shape = SubResource("RectangleShape2D_4q6er")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="2/StaticBody2D"]
+position = Vector2(-102, 69)
+shape = SubResource("RectangleShape2D_4q6er")
+
+[node name="Mail" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(148, 44)
+texture = ExtResource("2_cxn7g")
+
+[node name="Car" type="Sprite2D" parent="." groups=["player"]]
+y_sort_enabled = true
+position = Vector2(40.75, 71.25)
+scale = Vector2(1.02113, 1.04545)
+texture = ExtResource("3_d3eoq")
+
+[node name="Audio" type="Node2D" parent="."]
+position = Vector2(81, 44)
+
+[node name="1" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_3da6a")
+volume_db = -7.875
+
+[node name="2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_5t3mw")
+volume_db = -7.875
+
+[node name="3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_e5hcp")
+volume_db = -7.875
+
+[node name="4" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_unh3q")
+volume_db = -7.875
+
+[node name="5" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_hjuxf")
+volume_db = -7.875
+
+[node name="6" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_uiyuc")
+volume_db = -7.875
+
+[node name="7" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_rbmab")
+volume_db = -7.875
+
+[node name="8" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_c66fk")
+volume_db = -7.875
+
+[node name="9" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_n8bkb")
+volume_db = -7.875
+
+[node name="10" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_8erv2")
+volume_db = -7.875
+
+[node name="11" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_dlq04")
+volume_db = -7.875
+
+[node name="12" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_st3lv")
+volume_db = -7.875
+
+[node name="13" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_phx23")
+volume_db = -7.875
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_srfcg")]
+
+[node name="Player" parent="." instance=ExtResource("5_lppmy")]
+position = Vector2(88, 41)
+
+[node name="SceneChangerArea" parent="." instance=ExtResource("6_upg2w")]
+position = Vector2(89, 14)
+nextScene = "res://Scenes/1.tscn"
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("10_ikhsv")]
+position = Vector2(146, 47)
+dialogManager = NodePath("../DialogManager")
+
+[node name="DialogManager" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("11_jj40s")]
+position = Vector2(52, 45)
+dialogLines = Array[String](["YOU: Oh, I got a letter", "It's from... aunt Vic?", "But I don't have an aunt", "She says she's in trouble and I must help her.", "The letter was sent from Exbury", "I never heard about it. Is it a town?", "Oh, here's how to find it.", "It's so strange. Aunt Vic. Never heard of her.", "But it doesn't seem far away, I might as well go and help.", "I'll ask my mom later if she knows her."])
+voiceLines = [NodePath("../Audio/1"), NodePath("../Audio/2"), NodePath("../Audio/3"), NodePath("../Audio/4"), NodePath("../Audio/5"), NodePath("../Audio/6"), NodePath("../Audio/7"), NodePath("../Audio/8"), NodePath("../Audio/9"), NodePath("../Audio/10")]
+
+[node name="Beep" parent="." instance=ExtResource("12_v4qwr")]
+
+[node name="Executor" type="Node2D" parent="."]
+script = ExtResource("20_q2r54")
+
+[node name="DialogManager2" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("11_jj40s")]
+position = Vector2(49, 52)
+dialogLines = Array[String](["YOU: I'll go to Exbury to meet my aunt", "If she's really my aunt", "I hope it's not some scam"])
+voiceLines = [NodePath("../Audio/11"), NodePath("../Audio/12"), NodePath("../Audio/13")]
+
+[node name="Executor2" type="Node2D" parent="."]
+script = ExtResource("24_2708k")

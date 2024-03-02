@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://deotmtx8xe4ii"]
+
+[ext_resource type="Script" path="res://Scenes/3.gd" id="1_0kcwx"]
+[ext_resource type="FontFile" uid="uid://rlwi55rx7rlt" path="res://prstart.ttf" id="1_gq15y"]
+[ext_resource type="PackedScene" uid="uid://b8gs7c68r4b83" path="res://Prefabs/crt.tscn" id="2_pqw0o"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="4_o0hjj"]
+
+[node name="3" type="Node2D"]
+script = ExtResource("1_0kcwx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 161.0
+offset_bottom = 90.0
+color = Color(0.101961, 0.0980392, 0.0784314, 1)
+
+[node name="DialogText" type="Label" parent="." groups=["db"]]
+visible = false
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("1_gq15y")
+theme_override_font_sizes/font_size = 8
+text = "Dear Henry,
+Hope you're well. I can't say the same about my situation. Exbury is in chaos. I need your help. "
+vertical_alignment = 3
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="DialogText2" type="Label" parent="." groups=["db"]]
+visible = false
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("1_gq15y")
+theme_override_font_sizes/font_size = 8
+text = "Turn left halfway towards Harwich, follow the path through the forest. My house is on a hill. Meet me there."
+vertical_alignment = 3
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="DialogText3" type="Label" parent="." groups=["db"]]
+visible = false
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("1_gq15y")
+theme_override_font_sizes/font_size = 8
+text = "Hope you still remember me. I'm not that sure anymore. Things are... strange here. 
+Best wishes,
+Aunt Vic"
+vertical_alignment = 3
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="CRT" parent="." instance=ExtResource("2_pqw0o")]
+
+[node name="Beep" parent="." instance=ExtResource("4_o0hjj")]

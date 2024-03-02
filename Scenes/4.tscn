@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkyws6kr02q35"]
+
+[ext_resource type="Texture2D" uid="uid://ygjbhc48vv5m" path="res://1/intro.png" id="1_oq7vc"]
+[ext_resource type="PackedScene" uid="uid://doftxpnmf8m5e" path="res://1/tree_intro.tscn" id="2_sqj2m"]
+[ext_resource type="Script" path="res://Scenes/Spawnpoint.gd" id="3_hm0hj"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="4_51bld"]
+[ext_resource type="FontFile" uid="uid://rlwi55rx7rlt" path="res://prstart.ttf" id="5_68my6"]
+[ext_resource type="Script" path="res://Scenes/treeDestroyer.gd" id="5_ergc8"]
+[ext_resource type="Texture2D" uid="uid://clhe4dkinjnnl" path="res://Sprites/car.png" id="6_6v806"]
+[ext_resource type="PackedScene" uid="uid://dwc2c3b3w1dn2" path="res://Prefabs/music.tscn" id="7_xhf2w"]
+[ext_resource type="Script" path="res://Scenes/Stuff.gd" id="9_0wed2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q8y8"]
+size = Vector2(20, 42)
+
+[node name="4" type="Node2D"]
+
+[node name="Intro" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_oq7vc")
+
+[node name="TreeIntro" parent="." instance=ExtResource("2_sqj2m")]
+
+[node name="TreeIntro2" parent="." instance=ExtResource("2_sqj2m")]
+position = Vector2(52, -1)
+
+[node name="TreeIntro3" parent="." instance=ExtResource("2_sqj2m")]
+position = Vector2(107, -7)
+
+[node name="Spawnpoint" type="Node2D" parent="."]
+position = Vector2(-49, 0)
+script = ExtResource("3_hm0hj")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_51bld")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = -1
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 56.0
+color = Color(0.529412, 0.568627, 0.533333, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 51.0
+color = Color(0.101961, 0.0980392, 0.0784314, 1)
+
+[node name="Text" type="Label" parent="CanvasLayer/ColorRect" groups=["db"]]
+offset_top = 2.0
+offset_right = 152.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("5_68my6")
+theme_override_font_sizes/font_size = 9
+text = "A GAME BY PUNGA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = -1
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 56.0
+color = Color(0.529412, 0.568627, 0.533333, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ColorRect2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 51.0
+color = Color(0.101961, 0.0980392, 0.0784314, 1)
+
+[node name="Text" type="Label" parent="CanvasLayer/ColorRect2" groups=["db"]]
+offset_top = 2.0
+offset_right = 152.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("5_68my6")
+theme_override_font_sizes/font_size = 9
+text = "MUSIC BY Z3R0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7, 0)
+script = ExtResource("5_ergc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(189, 21)
+shape = SubResource("RectangleShape2D_8q8y8")
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(76, 76)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_6v806")
+
+[node name="Music" parent="." instance=ExtResource("7_xhf2w")]
+
+[node name="Stuff" type="Node2D" parent="."]
+script = ExtResource("9_0wed2")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

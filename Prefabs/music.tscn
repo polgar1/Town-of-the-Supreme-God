@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwc2c3b3w1dn2"]
+
+[ext_resource type="AudioStream" uid="uid://btrrj0v0rx2xa" path="res://Audio/z3r0-SadSatan.wav" id="1_7hr1u"]
+
+[node name="Music" type="AudioStreamPlayer" groups=["music"]]
+stream = ExtResource("1_7hr1u")
+volume_db = -15.928
+autoplay = true

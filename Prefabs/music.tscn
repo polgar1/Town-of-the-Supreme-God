@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwc2c3b3w1dn2"]
+[gd_scene load_steps=3 format=3 uid="uid://dwc2c3b3w1dn2"]
 
 [ext_resource type="AudioStream" uid="uid://btrrj0v0rx2xa" path="res://Audio/z3r0-SadSatan.wav" id="1_7hr1u"]
+[ext_resource type="Script" path="res://Prefabs/music.gd" id="2_yiwlb"]
 
 [node name="Music" type="AudioStreamPlayer" groups=["music"]]
 stream = ExtResource("1_7hr1u")
 volume_db = -15.928
 autoplay = true
+script = ExtResource("2_yiwlb")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

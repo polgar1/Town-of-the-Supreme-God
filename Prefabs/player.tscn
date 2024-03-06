@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bj7gvd8lqauxm"]
+[gd_scene load_steps=18 format=3 uid="uid://bj7gvd8lqauxm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_tk08i"]
 [ext_resource type="Texture2D" uid="uid://dk8xl3rboh2xx" path="res://Player/idle1.png" id="2_5x5so"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dvq4k4y4phuwq" path="res://Player/walkHor1.png" id="6_cuue6"]
 [ext_resource type="Texture2D" uid="uid://bg7c1yampx1o7" path="res://Player/walkHor2.png" id="7_1m226"]
 [ext_resource type="Texture2D" uid="uid://cflxp5bi2v18a" path="res://Player/eyes.png" id="8_43adt"]
+[ext_resource type="PackedScene" uid="uid://b7isd4f3551ko" path="res://Player/enemy.tscn" id="10_fplle"]
+[ext_resource type="Script" path="res://Player/enemy.gd" id="11_o74rj"]
 
 [sub_resource type="Animation" id="Animation_4h7bu"]
 length = 0.001
@@ -118,3 +120,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_2nxhj")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("10_fplle")]
+visible = false
+position = Vector2(19, 0)
+script = ExtResource("11_o74rj")

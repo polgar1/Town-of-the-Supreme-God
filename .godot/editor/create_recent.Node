@@ -1,10 +1,10 @@
 CollisionShape2D
 Area2D
 AnimationPlayer
-Node2D
-AudioStreamPlayer
-StaticBody2D
 CharacterBody2D
+Node2D
+StaticBody2D
+AudioStreamPlayer
 ColorRect
 Label
 CheckBox

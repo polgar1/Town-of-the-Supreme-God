@@ -1,0 +1,84 @@
+[gd_scene load_steps=15 format=3 uid="uid://b04b36uf1b8u0"]
+
+[ext_resource type="Texture2D" uid="uid://c4lf3gd2dbbvu" path="res://3/10.png" id="1_r5nym"]
+[ext_resource type="Script" path="res://Scenes/prevScene.gd" id="1_yj57o"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="2_ag1t7"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="3_4mq1v"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="4_thcdj"]
+[ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="5_avemj"]
+[ext_resource type="Texture2D" uid="uid://bs1l44h71m6pn" path="res://3/table0.png" id="6_8tiot"]
+[ext_resource type="PackedScene" uid="uid://c10upqfkmiwpg" path="res://Prefabs/interact_area.tscn" id="8_j4bos"]
+[ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="9_8mswh"]
+[ext_resource type="AudioStream" uid="uid://duu64mvv7rm1x" path="res://3/sam(31).wav" id="10_5u01f"]
+[ext_resource type="Script" path="res://3/KeyDel.gd" id="11_imp3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwcbn"]
+size = Vector2(181, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi6dg"]
+size = Vector2(269.5, 88.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kpq2"]
+size = Vector2(37, 15.5625)
+
+[node name="10" type="Node2D"]
+script = ExtResource("1_yj57o")
+cScene = 10
+
+[node name="10" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_r5nym")
+
+[node name="Beep" parent="." instance=ExtResource("2_ag1t7")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_4mq1v")]
+
+[node name="SceneChangerArea" parent="." instance=ExtResource("5_avemj")]
+position = Vector2(-3, 48)
+nextScene = "res://Scenes/9.tscn"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(81, 115)
+shape = SubResource("RectangleShape2D_vwcbn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(291, 45)
+shape = SubResource("RectangleShape2D_fi6dg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-129, 48)
+shape = SubResource("RectangleShape2D_fi6dg")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(30, -40)
+shape = SubResource("RectangleShape2D_fi6dg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(133, 15.2188)
+shape = SubResource("RectangleShape2D_6kpq2")
+
+[node name="Table0" type="Sprite2D" parent="."]
+position = Vector2(135.5, 19.5)
+texture = ExtResource("6_8tiot")
+
+[node name="Player" parent="." instance=ExtResource("4_thcdj")]
+position = Vector2(15, 50)
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("8_j4bos")]
+position = Vector2(135, 21)
+dialogManager = NodePath("../DialogManager")
+
+[node name="DialogManager" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("9_8mswh")]
+position = Vector2(107, 38)
+dialogLines = Array[String](["YOU: A key"])
+voiceLines = [NodePath("../AudioStreamPlayer")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5u01f")
+volume_db = -7.495
+
+[node name="KeyDel" type="Node2D" parent="."]
+script = ExtResource("11_imp3w")

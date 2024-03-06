@@ -16,7 +16,7 @@ func _physics_process(delta):
 		motion.y += 1
 	if Input.is_action_pressed("Up"):
 		motion.y -= 1
-	
+
 	motion = motion.normalized()
 	velocity = motion * speed
 	move_and_slide()

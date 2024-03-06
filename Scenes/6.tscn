@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://nwljgbe6qkcu"]
+[gd_scene load_steps=9 format=3 uid="uid://nwljgbe6qkcu"]
 
 [ext_resource type="Texture2D" uid="uid://c24nuakoe0g6s" path="res://2/6.png" id="1_i78c0"]
+[ext_resource type="Script" path="res://Scenes/prevScene.gd" id="1_rhfi7"]
 [ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="2_1sidc"]
 [ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="3_4ehvy"]
 [ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="4_v2s1i"]
 [ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="5_7uren"]
-[ext_resource type="Texture2D" uid="uid://dmnkxng3cg2ce" path="res://2/5a.png" id="6_pupg7"]
-[ext_resource type="Script" path="res://Scenes/EasterEgg.gd" id="7_7yuhr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvsk0"]
 size = Vector2(269.5, 59)
@@ -14,10 +13,9 @@ size = Vector2(269.5, 59)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nscjk"]
 size = Vector2(269.5, 88.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtcxb"]
-size = Vector2(34, 38)
-
 [node name="6" type="Node2D"]
+script = ExtResource("1_rhfi7")
+cScene = 6
 
 [node name="6" type="Sprite2D" parent="."]
 position = Vector2(80, 45)
@@ -35,10 +33,6 @@ position = Vector2(93, -6)
 scale = Vector2(7, 1)
 nextScene = "res://Scenes/7.tscn"
 x = 7.0
-
-[node name="5a" type="Sprite2D" parent="."]
-position = Vector2(0, 82)
-texture = ExtResource("6_pupg7")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 1)
@@ -62,12 +56,3 @@ shape = SubResource("RectangleShape2D_nscjk")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-105, -2)
 shape = SubResource("RectangleShape2D_nscjk")
-
-[node name="EasterEgg" type="Area2D" parent="."]
-script = ExtResource("7_7yuhr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EasterEgg"]
-position = Vector2(11, 76)
-shape = SubResource("RectangleShape2D_dtcxb")
-
-[connection signal="body_entered" from="EasterEgg" to="EasterEgg" method="_on_body_entered"]

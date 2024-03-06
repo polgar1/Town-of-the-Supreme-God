@@ -34,6 +34,7 @@ window/vsync/vsync_mode=0
 
 folder_colors={
 "res://2/": "purple",
+"res://3/": "yellow",
 "res://MainMenu/": "teal",
 "res://Prefabs/": "red",
 "res://Scenes/": "orange"

@@ -1,0 +1,136 @@
+[gd_scene load_steps=22 format=3 uid="uid://b35gvkjuxgfg1"]
+
+[ext_resource type="Texture2D" uid="uid://c4wmls2ufp7xg" path="res://2/8.png" id="1_bdip4"]
+[ext_resource type="Script" path="res://Scenes/prevScene.gd" id="1_tebr4"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="2_ln7ki"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="3_xgpt4"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="4_snhsp"]
+[ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="5_be70t"]
+[ext_resource type="PackedScene" uid="uid://c10upqfkmiwpg" path="res://Prefabs/interact_area.tscn" id="7_xfruo"]
+[ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="8_lfcaw"]
+[ext_resource type="AudioStream" uid="uid://bdryf6hpqqupb" path="res://2/sam(5).wav" id="9_d5sw7"]
+[ext_resource type="AudioStream" uid="uid://cxsgemmcv8gne" path="res://2/sam(6).wav" id="10_lcqvw"]
+[ext_resource type="AudioStream" uid="uid://bjjebubei1kgl" path="res://2/sam(7).wav" id="11_pwats"]
+[ext_resource type="AudioStream" uid="uid://ds7dfwnml8a1" path="res://2/sam(8).wav" id="12_e0vp5"]
+[ext_resource type="AudioStream" uid="uid://rnvs6nw38gip" path="res://2/sam(9).wav" id="13_ilwe2"]
+[ext_resource type="AudioStream" uid="uid://ba8vrmwshwupe" path="res://2/sam(10).wav" id="14_45plq"]
+[ext_resource type="Texture2D" uid="uid://c6oo3usuevafa" path="res://2/rock.png" id="14_qkcmw"]
+[ext_resource type="AudioStream" uid="uid://caf1i2iyfskxf" path="res://2/sam(11).wav" id="15_4lfa5"]
+[ext_resource type="Script" path="res://Scenes/Rock.gd" id="17_7pmid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2xj2"]
+size = Vector2(85.75, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r61mt"]
+size = Vector2(269.5, 88.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2todq"]
+size = Vector2(25.5, 22.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym8ku"]
+size = Vector2(16, 11)
+
+[node name="8" type="Node2D"]
+script = ExtResource("1_tebr4")
+cScene = 8
+
+[node name="8" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_bdip4")
+
+[node name="Beep" parent="." instance=ExtResource("2_ln7ki")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_xgpt4")]
+
+[node name="Player" parent="." instance=ExtResource("4_snhsp")]
+position = Vector2(136, 67)
+
+[node name="SceneChangerArea" parent="." instance=ExtResource("5_be70t")]
+position = Vector2(139, 98)
+nextScene = "res://Scenes/7.tscn"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(80.875, 100)
+shape = SubResource("RectangleShape2D_f2xj2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(11, 117)
+shape = SubResource("RectangleShape2D_f2xj2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(291, 45)
+shape = SubResource("RectangleShape2D_r61mt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-129, 51)
+shape = SubResource("RectangleShape2D_r61mt")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(29, -36)
+shape = SubResource("RectangleShape2D_r61mt")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(131.25, 22)
+shape = SubResource("RectangleShape2D_2todq")
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("7_xfruo")]
+position = Vector2(131, 27)
+dialogManager = NodePath("../DialogManager")
+
+[node name="DialogManager" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("8_lfcaw")]
+position = Vector2(56, 54)
+dialogLines = Array[String](["YOU: Is that blood?", "And what's this smell?", "Oh my fucking god!", "There's a dead dog in there!", "Holy shit!"])
+voiceLines = [NodePath("../Audio/AudioStreamPlayer"), NodePath("../Audio/AudioStreamPlayer2"), NodePath("../Audio/AudioStreamPlayer3"), NodePath("../Audio/AudioStreamPlayer4"), NodePath("../Audio/AudioStreamPlayer5")]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_d5sw7")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_lcqvw")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_pwats")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_e0vp5")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_ilwe2")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_45plq")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_4lfa5")
+volume_db = -7.495
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(57, 48)
+texture = ExtResource("14_qkcmw")
+script = ExtResource("17_7pmid")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock/StaticBody2D"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_ym8ku")
+
+[node name="InteractArea2" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("7_xfruo")]
+position = Vector2(58, 48)
+dialogManager = NodePath("../DialogManager2")
+
+[node name="DialogManager2" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("8_lfcaw")]
+position = Vector2(48, 61)
+dialogLines = Array[String](["A rock", "Might be useful"])
+voiceLines = [NodePath("../Audio/AudioStreamPlayer6"), NodePath("../Audio/AudioStreamPlayer7")]

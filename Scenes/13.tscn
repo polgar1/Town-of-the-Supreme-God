@@ -1,0 +1,57 @@
+[gd_scene load_steps=16 format=3 uid="uid://dfokjo67jvrq1"]
+
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="1_p3m7a"]
+[ext_resource type="Texture2D" uid="uid://c770xwah3cxpg" path="res://4/10.png" id="2_u6vuw"]
+[ext_resource type="Texture2D" uid="uid://ijc411x5rc5j" path="res://4/1.png" id="3_pc43f"]
+[ext_resource type="Texture2D" uid="uid://bdcq33dkghdwo" path="res://4/2.png" id="4_5q22a"]
+[ext_resource type="Texture2D" uid="uid://1tpltgd0s8wy" path="res://4/3.png" id="5_gne05"]
+[ext_resource type="Texture2D" uid="uid://csju6ed6yc1ha" path="res://4/4.png" id="6_7jqld"]
+[ext_resource type="Texture2D" uid="uid://cgcxl5oe4heuq" path="res://4/5.png" id="7_k6a0t"]
+[ext_resource type="Texture2D" uid="uid://c2ivo810v1nk2" path="res://4/6.png" id="8_sqgpw"]
+[ext_resource type="Texture2D" uid="uid://chiiseoum3xt7" path="res://4/7.png" id="9_ixc6k"]
+[ext_resource type="Texture2D" uid="uid://c24ogccj53a4a" path="res://4/8.png" id="10_qfaxr"]
+[ext_resource type="Texture2D" uid="uid://dxt0n3xhhe7eh" path="res://4/9.png" id="11_xnbc6"]
+[ext_resource type="Script" path="res://Cutscene.gd" id="12_txo3h"]
+[ext_resource type="AudioStream" uid="uid://c77ckuje5jfvx" path="res://4/sam(13).wav" id="13_fpaox"]
+
+[sub_resource type="Animation" id="Animation_5dkni"]
+resource_name = "1"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.9, 1.1, 1.3, 1.6, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_pc43f"), ExtResource("4_5q22a"), ExtResource("5_gne05"), ExtResource("6_7jqld"), ExtResource("7_k6a0t"), ExtResource("8_sqgpw"), ExtResource("9_ixc6k"), ExtResource("10_qfaxr"), ExtResource("11_xnbc6"), ExtResource("2_u6vuw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdgga"]
+_data = {
+"1": SubResource("Animation_5dkni")
+}
+
+[node name="13" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_p3m7a")]
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("2_u6vuw")
+
+[node name="Cutscene" type="AnimationPlayer" parent="1"]
+libraries = {
+"": SubResource("AnimationLibrary_wdgga")
+}
+script = ExtResource("12_txo3h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fpaox")
+volume_db = -10.396
+autoplay = true
+
+[connection signal="animation_finished" from="1/Cutscene" to="1/Cutscene" method="_on_animation_finished"]

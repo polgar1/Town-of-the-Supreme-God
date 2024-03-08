@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://do6f6dipm2bvj"]
+
+[ext_resource type="Texture2D" uid="uid://b7nscgbofqwk6" path="res://3/11.png" id="1_6e064"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="2_542n3"]
+[ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="3_hp542"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="4_ddg3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt80f"]
+size = Vector2(181, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k7yg"]
+size = Vector2(269.5, 88.5)
+
+[node name="11" type="Node2D"]
+
+[node name="11" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_6e064")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(81, 122)
+shape = SubResource("RectangleShape2D_bt80f")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(264, 45)
+shape = SubResource("RectangleShape2D_5k7yg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-102, 42)
+shape = SubResource("RectangleShape2D_5k7yg")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(30, -45)
+shape = SubResource("RectangleShape2D_5k7yg")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_542n3")]
+
+[node name="SceneChangerArea" parent="." instance=ExtResource("3_hp542")]
+position = Vector2(80, 100)
+nextScene = "res://Scenes/12.tscn"
+x = 5.0
+
+[node name="Player" parent="." instance=ExtResource("4_ddg3o")]
+position = Vector2(83, 16)

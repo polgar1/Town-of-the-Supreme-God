@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7isd4f3551ko"]
+[gd_scene load_steps=9 format=3 uid="uid://b7isd4f3551ko"]
 
+[ext_resource type="Script" path="res://Player/enemy.gd" id="1_2pl14"]
 [ext_resource type="Texture2D" uid="uid://qpashbvx63wb" path="res://Player/enemy2.png" id="1_axtyx"]
 [ext_resource type="Texture2D" uid="uid://bbwh723s7nsod" path="res://Player/enemy1.png" id="2_cffeo"]
+[ext_resource type="Script" path="res://Player/enemanim.gd" id="3_vspnl"]
+[ext_resource type="AudioStream" uid="uid://cbtkn70su1w4w" path="res://Audio/monster-howl-85304.mp3" id="5_53bxd"]
 
 [sub_resource type="Animation" id="Animation_ef745"]
 resource_name = "idle"
@@ -30,18 +33,25 @@ size = Vector2(3, 20)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(-1, 0)
+script = ExtResource("1_2pl14")
 
 [node name="Enemy1" type="Sprite2D" parent="."]
 position = Vector2(2, -2)
-texture = ExtResource("1_axtyx")
+texture = ExtResource("2_cffeo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy1"]
 libraries = {
 "": SubResource("AnimationLibrary_t70un")
 }
+script = ExtResource("3_vspnl")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_ken7e")
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_53bxd")
+volume_db = -2.19
+pitch_scale = 0.88

@@ -1,12 +1,12 @@
+Node2D
+AudioStreamPlayer
+AnimationPlayer
+Label
 CollisionShape2D
 Area2D
-AnimationPlayer
 CharacterBody2D
-Node2D
 StaticBody2D
-AudioStreamPlayer
 ColorRect
-Label
 CheckBox
 Sprite2D
 CanvasLayer

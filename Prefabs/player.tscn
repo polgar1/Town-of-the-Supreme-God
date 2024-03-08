@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj7gvd8lqauxm"]
+[gd_scene load_steps=20 format=3 uid="uid://bj7gvd8lqauxm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_tk08i"]
 [ext_resource type="Texture2D" uid="uid://dk8xl3rboh2xx" path="res://Player/idle1.png" id="2_5x5so"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bg7c1yampx1o7" path="res://Player/walkHor2.png" id="7_1m226"]
 [ext_resource type="Texture2D" uid="uid://cflxp5bi2v18a" path="res://Player/eyes.png" id="8_43adt"]
 [ext_resource type="PackedScene" uid="uid://b7isd4f3551ko" path="res://Player/enemy.tscn" id="10_fplle"]
-[ext_resource type="Script" path="res://Player/enemy.gd" id="11_o74rj"]
+[ext_resource type="AudioStream" uid="uid://cbtkn70su1w4w" path="res://Audio/monster-howl-85304.mp3" id="11_lpfq8"]
 
 [sub_resource type="Animation" id="Animation_4h7bu"]
 length = 0.001
@@ -101,6 +101,53 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nxhj"]
 size = Vector2(8, 27)
 
+[sub_resource type="Animation" id="Animation_rggey"]
+resource_name = "die"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(19, 0), Vector2(3, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scream:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6mpk"]
+_data = {
+"die": SubResource("Animation_rggey")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 script = ExtResource("1_tk08i")
@@ -125,6 +172,14 @@ shape = SubResource("RectangleShape2D_2nxhj")
 position = Vector2(16, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("10_fplle")]
-visible = false
 position = Vector2(19, 0)
-script = ExtResource("11_o74rj")
+
+[node name="EnemyAttack" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q6mpk")
+}
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_lpfq8")
+volume_db = -2.19
+pitch_scale = 0.88

@@ -1,0 +1,128 @@
+[gd_scene load_steps=23 format=3 uid="uid://drsprgmlds4ca"]
+
+[ext_resource type="Texture2D" uid="uid://bmorj238qradb" path="res://3/12.png" id="1_r6vqt"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="2_2y520"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="3_73ft7"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="4_pjp0b"]
+[ext_resource type="Texture2D" uid="uid://bh432343kcjjn" path="res://3/vic.png" id="5_6qk4r"]
+[ext_resource type="PackedScene" uid="uid://c10upqfkmiwpg" path="res://Prefabs/interact_area.tscn" id="6_10d31"]
+[ext_resource type="PackedScene" uid="uid://bdrgc6gqelvh8" path="res://Prefabs/dialog_manager.tscn" id="7_hkaft"]
+[ext_resource type="AudioStream" uid="uid://cvfggpo4ccwbh" path="res://3/sam(1).wav" id="8_5qmxq"]
+[ext_resource type="AudioStream" uid="uid://sbtl4643im17" path="res://3/sam(2).wav" id="9_0mu45"]
+[ext_resource type="AudioStream" uid="uid://blkb71oljigao" path="res://3/sam(3).wav" id="10_2rc47"]
+[ext_resource type="AudioStream" uid="uid://b2ifhcy2pscpr" path="res://3/sam(4).wav" id="11_we30x"]
+[ext_resource type="AudioStream" uid="uid://bu8ys4afcmj14" path="res://3/sam(5).wav" id="12_pwwfq"]
+[ext_resource type="AudioStream" uid="uid://synxgerrrx15" path="res://3/sam(6).wav" id="13_xaajw"]
+[ext_resource type="AudioStream" uid="uid://c2to43cxssavm" path="res://3/sam(7).wav" id="14_abuqr"]
+[ext_resource type="AudioStream" uid="uid://ced5x7dtvg3mh" path="res://3/sam(8).wav" id="15_siaaj"]
+[ext_resource type="AudioStream" uid="uid://5cvj6met5b0a" path="res://3/sam(9).wav" id="16_6gld1"]
+[ext_resource type="AudioStream" uid="uid://xg0p2c23c32q" path="res://3/sam(10).wav" id="17_iilpp"]
+[ext_resource type="AudioStream" uid="uid://d1rndqnood6s" path="res://3/sam(11).wav" id="18_5qcnf"]
+[ext_resource type="AudioStream" uid="uid://bfnvdf7rcqu7n" path="res://3/sam(12).wav" id="19_31hrr"]
+[ext_resource type="Script" path="res://Scenes/Adsdadsa.gd" id="20_y65g2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fekgp"]
+size = Vector2(181, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47lfk"]
+size = Vector2(269.5, 88.5)
+
+[node name="12" type="Node2D"]
+
+[node name="12" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(80, 45)
+texture = ExtResource("1_r6vqt")
+
+[node name="Vic" type="Sprite2D" parent="."]
+position = Vector2(18, 41)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_6qk4r")
+
+[node name="Beep" parent="." instance=ExtResource("2_2y520")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_73ft7")]
+
+[node name="Player" parent="." instance=ExtResource("4_pjp0b")]
+position = Vector2(136, 20)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(85, 115)
+shape = SubResource("RectangleShape2D_fekgp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(290, 43)
+shape = SubResource("RectangleShape2D_47lfk")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-129, 42)
+shape = SubResource("RectangleShape2D_47lfk")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(34, -43)
+shape = SubResource("RectangleShape2D_47lfk")
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("dialogManager") instance=ExtResource("6_10d31")]
+position = Vector2(18, 42)
+dialogManager = NodePath("../DialogManager")
+
+[node name="DialogManager" parent="." node_paths=PackedStringArray("voiceLines") instance=ExtResource("7_hkaft")]
+position = Vector2(34, 69)
+dialogLines = Array[String](["YOU: Aunt Vic!", "Wait, I remember you now.", "VIC: Listen, Henry", "I don't have much time left", "There's something in this town", "Something related to those fucking cultists", "There's some kind of force field around the town", "If someone or something is inside, ", "everyone else from outside will forget them", "It erases us and the town from people's memories", "I was attacked by the cultist yesterday", "They said I'll be a sacrifice for the Supreme God. I..."])
+voiceLines = [NodePath("../Audio/AudioStreamPlayer"), NodePath("../Audio/AudioStreamPlayer2"), NodePath("../Audio/AudioStreamPlayer3"), NodePath("../Audio/AudioStreamPlayer4"), NodePath("../Audio/AudioStreamPlayer5"), NodePath("../Audio/AudioStreamPlayer6"), NodePath("../Audio/AudioStreamPlayer7"), NodePath("../Audio/AudioStreamPlayer8"), NodePath("../Audio/AudioStreamPlayer9"), NodePath("../Audio/AudioStreamPlayer10"), NodePath("../Audio/AudioStreamPlayer11"), NodePath("../Audio/AudioStreamPlayer12")]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_5qmxq")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_0mu45")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_2rc47")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_we30x")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_pwwfq")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_xaajw")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_abuqr")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_siaaj")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_6gld1")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("17_iilpp")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("18_5qcnf")
+volume_db = -7.495
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("19_31hrr")
+volume_db = -7.495
+
+[node name="Adsdadsa" type="Node2D" parent="."]
+script = ExtResource("20_y65g2")

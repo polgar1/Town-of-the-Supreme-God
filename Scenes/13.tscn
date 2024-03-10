@@ -16,7 +16,7 @@
 
 [sub_resource type="Animation" id="Animation_5dkni"]
 resource_name = "1"
-length = 2.1
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +41,7 @@ _data = {
 
 [node name="1" type="Sprite2D" parent="."]
 position = Vector2(80, 45)
-texture = ExtResource("2_u6vuw")
+texture = ExtResource("3_pc43f")
 
 [node name="Cutscene" type="AnimationPlayer" parent="1"]
 libraries = {

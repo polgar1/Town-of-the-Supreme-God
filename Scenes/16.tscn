@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkn4y4j0i80pg"]
+
+[ext_resource type="Texture2D" uid="uid://i4nkok2y75xw" path="res://5/16.png" id="1_4akhk"]
+[ext_resource type="Texture2D" uid="uid://brpsab37sb02w" path="res://5/16a.png" id="2_at1gy"]
+[ext_resource type="Script" path="res://Scenes/churchanim.gd" id="3_vet6h"]
+[ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="4_pad3c"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="5_4pknv"]
+[ext_resource type="PackedScene" uid="uid://bj7gvd8lqauxm" path="res://Prefabs/player.tscn" id="6_u8niu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62s54"]
+size = Vector2(34.5, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut6nv"]
+size = Vector2(269.5, 88.5)
+
+[sub_resource type="Animation" id="Animation_p3nrm"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("16:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_4akhk"), ExtResource("2_at1gy"), ExtResource("1_4akhk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6om1"]
+_data = {
+"new_animation": SubResource("Animation_p3nrm")
+}
+
+[node name="16" type="Node2D"]
+
+[node name="16" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_4akhk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="16"]
+position = Vector2(-1, 3)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(96, -28)
+shape = SubResource("RectangleShape2D_62s54")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(-94, -24)
+shape = SubResource("RectangleShape2D_62s54")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(2, 70)
+shape = SubResource("RectangleShape2D_62s54")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(2, -62)
+shape = SubResource("RectangleShape2D_62s54")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(146, 31)
+shape = SubResource("RectangleShape2D_ut6nv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(-143, 32)
+shape = SubResource("RectangleShape2D_ut6nv")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="16/StaticBody2D"]
+position = Vector2(-4, -92)
+shape = SubResource("RectangleShape2D_ut6nv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j6om1")
+}
+script = ExtResource("3_vet6h")
+
+[node name="Beep" parent="." instance=ExtResource("4_pad3c")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_4pknv")]
+
+[node name="Player" parent="." instance=ExtResource("6_u8niu")]
+position = Vector2(80, 71)

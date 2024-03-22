@@ -4,4 +4,4 @@ extends Node2D
 
 func _ready():
 	Global.prevScene = cScene
-	Global.beenIn10 = true
+

@@ -44,8 +44,11 @@ size = Vector2(269.5, 88.5)
 size = Vector2(18, 21.0625)
 
 [sub_resource type="Animation" id="Animation_5v6ud"]
+resource_local_to_scene = false
 resource_name = "1"
 length = 2.0
+loop_mode = 0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

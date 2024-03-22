@@ -1,6 +1,5 @@
+res://Scenes/16.tscn
 res://crt.gdshader
-res://Scenes/15.tscn
-res://Scenes/15.gd
 res://Scenes/game_over.tscn
 res://MainMenu/menu.tscn
 res://Player/enemy.tscn
@@ -8,5 +7,14 @@ res://Prefabs/player.tscn
 res://Scenes/12.tscn
 res://Scenes/13.tscn
 res://Scenes/14.tscn
-res://Scenes/16.tscn
-res://Scenes/churchanim.gd
+res://Scenes/15.tscn
+res://Scenes/gagpzgokr.gd
+res://Scenes/17.tscn
+res://Scenes/17.gd
+res://Scenes/18.tscn
+res://Scenes/18.gd
+res://Scenes/9.tscn
+res://Scenes/10.tscn
+res://Scenes/10.gd
+res://Scenes/prevScene.gd
+res://Prefabs/canvas_layer.tscn

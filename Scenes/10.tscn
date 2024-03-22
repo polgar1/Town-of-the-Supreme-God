@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b04b36uf1b8u0"]
+[gd_scene load_steps=16 format=3 uid="uid://b04b36uf1b8u0"]
 
 [ext_resource type="Script" path="res://Scenes/prevScene.gd" id="1_0evcl"]
 [ext_resource type="Texture2D" uid="uid://c4lf3gd2dbbvu" path="res://3/10.png" id="2_exntb"]
+[ext_resource type="Script" path="res://Scenes/10.gd" id="3_mm7ug"]
 [ext_resource type="PackedScene" uid="uid://bftdr84mou7fk" path="res://Prefabs/beep.tscn" id="3_vxgy5"]
 [ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="4_cr2h2"]
 [ext_resource type="PackedScene" uid="uid://bfmvto4bk1iu7" path="res://Prefabs/scene_changer_area.tscn" id="5_uyooq"]
@@ -28,6 +29,7 @@ cScene = 10
 [node name="10" type="Sprite2D" parent="."]
 position = Vector2(80, 45)
 texture = ExtResource("2_exntb")
+script = ExtResource("3_mm7ug")
 
 [node name="Beep" parent="." instance=ExtResource("3_vxgy5")]
 

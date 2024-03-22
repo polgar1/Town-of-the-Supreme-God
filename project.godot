@@ -36,6 +36,7 @@ folder_colors={
 "res://2/": "purple",
 "res://3/": "yellow",
 "res://5/": "pink",
+"res://6/": "red",
 "res://MainMenu/": "teal",
 "res://Prefabs/": "red",
 "res://Scenes/": "orange"

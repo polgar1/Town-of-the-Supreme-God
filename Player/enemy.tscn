@@ -7,9 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://cbtkn70su1w4w" path="res://Audio/monster-howl-85304.mp3" id="5_53bxd"]
 
 [sub_resource type="Animation" id="Animation_ef745"]
+resource_local_to_scene = false
 resource_name = "idle"
 length = 0.4
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

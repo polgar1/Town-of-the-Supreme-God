@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cofaql6461dsf"]
+
+[ext_resource type="Texture2D" uid="uid://dpvf7d2bp5w61" path="res://6/8.png" id="1_3iimg"]
+[ext_resource type="Script" path="res://Scenes/18.gd" id="1_iiewm"]
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="2_hr1bq"]
+[ext_resource type="FontFile" uid="uid://rlwi55rx7rlt" path="res://prstart.ttf" id="3_sa0p5"]
+
+[node name="18" type="Node2D"]
+script = ExtResource("1_iiewm")
+
+[node name="8" type="Sprite2D" parent="."]
+position = Vector2(80, 45)
+texture = ExtResource("1_3iimg")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_hr1bq")]
+
+[node name="DialogText" type="Label" parent="." groups=["db"]]
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0.529412, 0.568627, 0.533333, 1)
+theme_override_fonts/font = ExtResource("3_sa0p5")
+theme_override_font_sizes/font_size = 8
+text = "MORTIS"
+horizontal_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2

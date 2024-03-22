@@ -15,8 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://c77ckuje5jfvx" path="res://4/sam(13).wav" id="13_fpaox"]
 
 [sub_resource type="Animation" id="Animation_5dkni"]
+resource_local_to_scene = false
 resource_name = "1"
 length = 2.5
+loop_mode = 0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

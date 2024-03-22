@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2rbdtwytbhh"]
+
+[ext_resource type="PackedScene" uid="uid://bevi32b7fuser" path="res://Prefabs/canvas_layer.tscn" id="1_lcpd8"]
+[ext_resource type="AudioStream" uid="uid://beg4mjtg5i1wv" path="res://6/sam.wav" id="2_s0vet"]
+[ext_resource type="Texture2D" uid="uid://dr26k0mlh06tu" path="res://6/7.png" id="3_5bxw6"]
+[ext_resource type="Texture2D" uid="uid://ccyenme1gwbyc" path="res://6/1.png" id="4_euwcq"]
+[ext_resource type="Texture2D" uid="uid://cjdklfoso7be8" path="res://6/2.png" id="5_gpdwp"]
+[ext_resource type="Texture2D" uid="uid://duliujlmfdd1t" path="res://6/3.png" id="6_gfp8a"]
+[ext_resource type="Texture2D" uid="uid://c4jtehik8xuyb" path="res://6/4.png" id="7_hg6t0"]
+[ext_resource type="Texture2D" uid="uid://dcmft1gpcqu88" path="res://6/5.png" id="8_dgqoh"]
+[ext_resource type="Texture2D" uid="uid://c4c2rch17xxf6" path="res://6/6.png" id="9_0ko0w"]
+[ext_resource type="Script" path="res://Scenes/17.gd" id="10_f1yh5"]
+
+[sub_resource type="Animation" id="Animation_nengj"]
+resource_local_to_scene = false
+resource_name = "1"
+length = 2.0
+loop_mode = 0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_euwcq"), ExtResource("5_gpdwp"), ExtResource("6_gfp8a"), ExtResource("7_hg6t0"), ExtResource("8_dgqoh"), ExtResource("9_0ko0w"), ExtResource("3_5bxw6")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"lol"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.51875, 0.538889), Vector2(0.51875, 0.538889), Vector2(0.790625, 0.825)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(79, 45), Vector2(79, 45), Vector2(95, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6buj"]
+_data = {
+"1": SubResource("Animation_nengj")
+}
+
+[node name="17" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_lcpd8")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_s0vet")
+volume_db = -7.068
+autoplay = true
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(95, 40)
+scale = Vector2(0.790625, 0.825)
+texture = ExtResource("3_5bxw6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="1"]
+libraries = {
+"": SubResource("AnimationLibrary_j6buj")
+}
+script = ExtResource("10_f1yh5")
